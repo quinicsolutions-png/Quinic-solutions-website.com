@@ -408,7 +408,6 @@
     .wave-row span, .live .pulse, .bubble{animation:none !important; opacity:1;}
   }
 </style>
-<script src="https://js.paystack.co/v2/inline.js"></script>
 </head>
 <body>
 
@@ -558,7 +557,7 @@
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#22B8A8" stroke-width="2.2"/></svg>FAQ & lead capture training</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#22B8A8" stroke-width="2.2"/></svg>Monthly performance summary</li>
           </ul>
-          <button onclick="payWithPaystack('starter')" class="btn btn-ghost">Pay & Start with Starter</button>
+          <a href="#contact" class="btn btn-ghost">Start with Starter</a>
         </div>
 
         <div class="price-card featured">
@@ -573,7 +572,7 @@
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#FFB020" stroke-width="2.2"/></svg>Calendar & CRM integration</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#FFB020" stroke-width="2.2"/></svg>Bi-weekly optimization review</li>
           </ul>
-          <button onclick="payWithPaystack('growth')" class="btn btn-primary">Pay & Choose Growth</button>
+          <a href="#contact" class="btn btn-primary">Choose Growth</a>
         </div>
 
         <div class="price-card">
@@ -588,7 +587,7 @@
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#22B8A8" stroke-width="2.2"/></svg>Dedicated account manager</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#22B8A8" stroke-width="2.2"/></svg>Weekly reporting & SLA</li>
           </ul>
-          <button onclick="payWithPaystack('enterprise')" class="btn btn-ghost">Pay & Start Enterprise</button>
+          <a href="#contact" class="btn btn-ghost">Talk to sales</a>
         </div>
       </div>
 
@@ -659,7 +658,7 @@
           </div>
         </div>
 
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form action="https://formspree.io/f/xdenklrk" method="POST">
           <input type="hidden" name="_subject" value="New enquiry from quinicsolutions.com">
           <div class="row-2">
             <div class="field">
@@ -716,34 +715,5 @@
   }
 </script>
 
-<script>
-  // Paystack Inline Popup — subscription checkout
-  const PAYSTACK_PUBLIC_KEY = "pk_test_7d1921e4976afdcb251e5c093a41a8ed5a5477bf";
-
-  const PLANS = {
-    starter: { code: "PLN_h01jbxlborwpvu1", label: "Starter — Chat Agent" },
-    growth:  { code: "PLN_4bofv5tnsfiua4q",  label: "Growth — Voice + Chat Agent" },
-    enterprise: { code: "PLN_ibnqbbpizqg77w5", label: "Enterprise — Full Talk Suite" }
-  };
-
-  function payWithPaystack(planKey){
-    const plan = PLANS[planKey];
-    const email = prompt("Enter your email to start your " + plan.label + " subscription:");
-    if(!email) return;
-
-    const handler = PaystackPop.setup({
-      key: PAYSTACK_PUBLIC_KEY,
-      email: email,
-      plan: plan.code,
-      onClose: function(){
-        alert("Payment window closed.");
-      },
-      callback: function(response){
-        alert("Payment successful! Reference: " + response.reference + "\nWe'll be in touch shortly to get your AI agent set up.");
-      }
-    });
-    handler.openIframe();
-  }
-</script>
 </body>
 </html>
